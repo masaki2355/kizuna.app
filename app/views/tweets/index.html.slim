@@ -1,0 +1,28 @@
+<h1>Timeline</h1>
+
+.mb-3
+  = paginate @tweets
+  = page_entries_info @tweets
+
+.container-fluid
+
+table.table.table-striped
+  thead
+    tr
+      th.col-2 学校名
+      th.col-1 学年
+      th.col-8 今日の出来事
+      th.col-1 投稿日時  
+    
+  tbody
+    
+    - @tweets.each do |tweet|
+   
+      tr
+        td= tweet.user.schoolname
+        td= tweet.schoolyear
+        td= tweet.event
+        td= tweet.updated_at.to_s(:datetime_jp)
+         
+= link_to 'つぶやく', new_tweet_path, class: 'btn btn-primary mr-3'
+= link_to '自分の投稿内容', tweet_path(current_user.id), class: 'btn btn-primary mr-3'

@@ -1,0 +1,15 @@
+<h1>編集画面</h1>
+
+= form_for @tweet do |f|
+  table
+    tr
+      th= f.label :schoolyear, "学年　※15文字まで"
+      td= f.text_field :schoolyear
+    tr
+      th= f.label :event, "今日の出来事　※200文字まで"
+      td= f.text_area :event   
+
+    tbody
+      td
+        = f.submit '編集完了', class: 'btn btn-primary'
+        = link_to "戻る", tweet_path, class: 'btn btn-primary'

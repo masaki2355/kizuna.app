@@ -1,0 +1,38 @@
+
+
+h1MyTweet
+
+
+
+.mb-3
+  = paginate @tweets
+  = page_entries_info @tweets
+
+.container-fluid
+
+table.table.table-striped
+  thead
+    tr
+      th.col-1  学年
+      th.col-9  今日の出来事
+      th.col-1  編集
+      th.col-1  削除
+
+  tbody    
+  
+    - @tweets.each do |tweet|
+
+      tr
+        td= tweet.schoolyear
+        td= tweet.event
+        td= link_to "編集", edit_tweet_path(tweet.id)
+        td= link_to "削除", tweet_path(tweet.id), method: :delete, data: {confirm: "本当に削除しますか"}
+
+= link_to 'タイムライン', tweets_path, class: 'btn btn-primary mr-3'
+    
+
+
+
+
+
+
